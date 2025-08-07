@@ -659,6 +659,34 @@ struct llm_graph_context {
                      int   il,
              ggml_tensor * probs_in = nullptr) const;
 
+    ggml_tensor * build_moe_ffn_dynamix(
+             ggml_tensor * cur,
+             ggml_tensor * gate_inp,
+             ggml_tensor * gate_inp_b,
+
+             ggml_tensor * up_exps,
+             ggml_tensor * up_exps_q4,
+             ggml_tensor * up_exps_b,
+
+             ggml_tensor * gate_exps,
+             ggml_tensor * gate_exps_q4,
+             ggml_tensor * gate_exps_b,
+
+             ggml_tensor * down_exps,
+             ggml_tensor * down_exps_q4,
+             ggml_tensor * down_exps_b,
+
+             ggml_tensor * exp_probs_b,
+                 int64_t   n_expert,
+                 int64_t   n_expert_used,
+         llm_ffn_op_type   type_op,
+                    bool   norm_w,
+                    bool   scale_w,
+                   float   w_scale,
+            llama_expert_gating_func_type gating_op,
+                     int   il,
+             ggml_tensor * probs_in = nullptr) const;
+             
     //
     // inputs
     //
